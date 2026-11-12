@@ -21,6 +21,13 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
+      - name: Fetch fonts
+        run: |
+          mkdir -p app/src/main/res/font app/src/main/assets
+          curl -sSfL -o app/src/main/res/font/manrope.ttf "https://github.com/google/fonts/raw/main/ofl/manrope/Manrope%5Bwght%5D.ttf"
+          curl -sSfL -o app/src/main/res/font/space_grotesk.ttf "https://github.com/google/fonts/raw/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf"
+          cp app/src/main/res/font/manrope.ttf app/src/main/assets/
+
       - name: Test and build
         run: |
           chmod +x gradlew
